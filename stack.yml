@@ -1,0 +1,25 @@
+version: '3.1'
+
+services: 
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  
+
+  db: 
+    environment: 
+      POSTGRES_DATABASE: db
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    image: "postgres:alpine"
+    restart: always
+    volumes: 
+      - "./10-LeaguesTable.sql:/docker-entrypoint-initdb.d/10-LeaguesTable.sql"
+      - "./15-ClubsTable.sql:/docker-entrypoint-initdb.d/15-ClubsTable.sql"
+      - "./20-NationalitiesTable.sql:/docker-entrypoint-initdb.d/20-NationalitiesTable.sql"
+      - "./30-PlayerTable.sql:/docker-entrypoint-initdb.d/30-PlayerTable.sql"
+  
+  

@@ -1,3 +1,5 @@
+CREATE EXTENSION unaccent;
+
 CREATE TABLE Leagues (
 League VARCHAR(255),
 PRIMARY KEY(League)
